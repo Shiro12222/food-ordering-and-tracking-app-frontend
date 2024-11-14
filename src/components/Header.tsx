@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from '../assets/images/logo.png'; 
+import logo from '../assets/images/Logo.png'; 
 import MobileNav from "./MobileNav";
 import MainNav from "./MainNav";
 
