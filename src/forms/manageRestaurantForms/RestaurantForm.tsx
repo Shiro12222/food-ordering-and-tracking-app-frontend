@@ -42,7 +42,27 @@ const RestaurantForm = ({onSave, isLoading}: Props) => {
     });
 
     const onSubmit = (formDataJson: restaurantFormData) => {
+        const formData = new FormData();
 
+        formData.append("restaurantName", formDataJson.restaurantName);
+        formData.append("city", formDataJson.city);
+        formData.append("country", formDataJson.country);
+
+        formData.append("deliveryPrice", formDataJson.deliveryPrice.toString());
+        formData.append("estimatedDeliveryTime", formDataJson.estimatedDeliveryTime.toString());
+        formDataJson.cuisines.forEach((cuisine, index) => {
+            formData.append(`cuisines[${index}]`, cuisine);
+        });
+        formDataJson.menuItems.forEach((menuItems, index) => {
+            formData.append(`menuItems[${index}][name]`, menuItems.name);
+            formData.append(
+                `menuItems[${index}][price]`, 
+                (menuItems.price * 100).toString()
+            );
+        });
+        formData.append(`imageFile`, formDataJson.imageFile);
+
+        onSave(formData);
     };
 
     return (
@@ -72,7 +92,7 @@ const RestaurantForm = ({onSave, isLoading}: Props) => {
                 {isLoading ? <ButtonLoading /> : <Button type="submit">Submit</Button>}
             </form>
         </Form>
-    )
-}
+    );
+};
 
 export default RestaurantForm;
