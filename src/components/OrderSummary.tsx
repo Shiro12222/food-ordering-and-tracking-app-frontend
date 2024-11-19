@@ -29,7 +29,6 @@ const OrderSummary = ({restaurant, cartItems, removeFromCart}: Props) => {
         <CardHeader>
             <CardTitle className="text-2xl font-bold tracking-tight flex justify-between">
                 <span>Your Order</span>
-                <span>${getTotalCost()}</span>
             </CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-5">
@@ -51,6 +50,11 @@ const OrderSummary = ({restaurant, cartItems, removeFromCart}: Props) => {
             <div className="flex justify-between">
                 <span>Delivery</span>
                 <span>${(restaurant.deliveryPrice)}</span>
+            </div>
+            <Separator />
+            <div className="flex justify-between">
+                <span className="mr-4">Total</span>
+                <span className="font-bold">${getTotalCost()}</span>
             </div>
         </CardContent>
     </>

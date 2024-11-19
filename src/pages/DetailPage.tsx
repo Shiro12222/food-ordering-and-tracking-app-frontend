@@ -1,10 +1,11 @@
 
 import { useGetRestaurant } from "@/api/RestaurantApi";
+import CheckoutButton from "@/components/CheckoutButton";
 import MenuItem from "@/components/MenuItem";
 import OrderSummary from "@/components/OrderSummary";
 import RestaurantInfoForm from "@/components/RestaurantInfoForm";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Card } from "@/components/ui/card";
+import { Card, CardFooter } from "@/components/ui/card";
 import { MenuItem as MenuItemType } from "@/types";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -88,6 +89,9 @@ const DetailPage = () => {
             <div>
                 <Card>
                     <OrderSummary restaurant={restaurant} cartItems={cartItems} removeFromCart={removeFromCart}/>
+                    <CardFooter>
+                        <CheckoutButton />
+                    </CardFooter>
                 </Card>
             </div>
         </div>
