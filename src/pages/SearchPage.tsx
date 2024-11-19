@@ -21,6 +21,8 @@ const SearchPage = () => {
     selectCuisines: [],
   });
 
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
   const { results, isLoading } = useSearchRestaurants(searchState, city);
 
   const setSelectedCuisines = (selectCuisines: string[]) => {
@@ -68,7 +70,14 @@ const SearchPage = () => {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
         <div id="cuisines-list">
-          <CuisinesFilter selectedCuisines={searchState.selectCuisines} onChange={setSelectedCuisines}/>
+          <CuisinesFilter 
+            selectedCuisines={searchState.selectCuisines} 
+            onChange={setSelectedCuisines}
+            isExpanded={isExpanded}
+            onExpandedClick={() => 
+              setIsExpanded((prevIsExpanded) => !prevIsExpanded)
+            }
+          />
         </div>
         <div id="main-content" className="flex flex-col gap-5">
           <SearchBar 

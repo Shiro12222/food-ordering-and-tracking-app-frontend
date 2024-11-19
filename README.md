@@ -51,3 +51,4 @@ export default tseslint.config({
 
 <!-- testing account are the following -->
 testEmail1@gmail.com  testEmail1%
+testEmail2@gmail.com  testEmail2%
